@@ -17,7 +17,7 @@ import projects.bryang8.com.postlife.login.ui.LoginActivity;
 import projects.bryang8.com.postlife.main.MainPresenter;
 import projects.bryang8.com.postlife.main.MainPresenterImpl;
 import projects.bryang8.com.postlife.main.adapters.MainPagerAdapter;
-import projects.bryang8.com.postlife.messages.chatlist.ChatListFragment;
+import projects.bryang8.com.postlife.messages.chatlist.ui.ChatListFragment;
 import projects.bryang8.com.postlife.posts.PostsFragment;
 import projects.bryang8.com.postlife.profile.ProfileFragment;
 

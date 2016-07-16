@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.messages.chatlist.adapters;
+package projects.bryang8.com.postlife.messages.chatlist.ui.adapters;
 
 import projects.bryang8.com.postlife.entities.User;
 

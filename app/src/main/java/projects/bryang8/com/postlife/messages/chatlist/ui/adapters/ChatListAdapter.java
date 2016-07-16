@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.messages.chatlist.adapters;
+package projects.bryang8.com.postlife.messages.chatlist.ui.adapters;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
@@ -20,14 +20,14 @@ import projects.bryang8.com.postlife.lib.ImageLoader;
 /**
  * Created by bryan_g8 on 18/06/16.
  */
-public class ContactListAdapter extends RecyclerView.Adapter <ContactListAdapter.ViewHolder> {
+public class ChatListAdapter extends RecyclerView.Adapter <ChatListAdapter.ViewHolder> {
     private List<User> contactList;
     private ImageLoader imageLoader;
     private OnItemClickListener clickListener;
 
-    public ContactListAdapter(List<User> contactList,
-                              ImageLoader imageLoader,
-                              OnItemClickListener clickListener) {
+    public ChatListAdapter(List<User> contactList,
+                           ImageLoader imageLoader,
+                           OnItemClickListener clickListener) {
         this.contactList = contactList;
         this.imageLoader = imageLoader;
         this.clickListener = clickListener;
