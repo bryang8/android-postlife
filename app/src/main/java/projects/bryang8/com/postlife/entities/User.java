@@ -13,6 +13,16 @@ public class User {
     public final static boolean ONLINE = true;
     public final static boolean OFFLINE = false;
 
+    public User() {
+    }
+
+    public User(String name, String email, boolean online, Map<String, Boolean> contacts) {
+        this.name = name;
+        this.email = email;
+        this.online = online;
+        this.contacts = contacts;
+    }
+
     public String getName() {
         return name;
     }

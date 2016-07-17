@@ -19,7 +19,7 @@ public class ChatListPresenterImpl implements ChatListPresenter {
     public ChatListPresenterImpl(ChatListView view) {
         this.view = view;
         this.eventBus = GreenRobotEventBus.getInstance();
-        this.interactor = new ChatInteractorImpl();
+        this.interactor = new ChatListInteractorImpl();
     }
 
     public void onCreate() {

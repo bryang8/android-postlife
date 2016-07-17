@@ -23,6 +23,7 @@ public class FirebaseHelper {
     private final static String USERS_PATH = "users";
     private final static String CONTACTS_PATH = "contacts";
     private final static String POSTS_PATH = "posts";
+    private final static String FRIENDS_PATH = "friends";
     private final static String FIREBASE_URL = "https://androidpostlife.firebaseio.com/";
 
     private static class SingletonHolder {
@@ -88,13 +89,12 @@ public class FirebaseHelper {
         return dataReference.getRoot().child(CHATS_PATH).child(keyChat);
     }
 
-    public Firebase getPostsReference(String receiver){
-        String keyPoster = receiver.replace(".","_");
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yy_DD_hh_mm_ss");
-        String datetime = sdf.format(date).toString();
-        String keyPost = keyPoster + SEPARATOR + datetime;
-        return dataReference.getRoot().child(CHATS_PATH).child(keyPost);
+    public Firebase getMyFriendsReference(){
+        return getFriendsReference(getAuthUserEmail());
+    }
+
+    private Firebase getFriendsReference(String email) {
+        return getUserReference(email).child(FRIENDS_PATH);
     }
 
     public void changeUserConnectionStatus(boolean online) {
@@ -134,6 +134,7 @@ public class FirebaseHelper {
             public void onCancelled(FirebaseError firebaseError) {}
         });
     }
+
 
     public void notifyContactsOfConnectionChange(boolean online) {
         notifyContactsOfConnectionChange(online, false);

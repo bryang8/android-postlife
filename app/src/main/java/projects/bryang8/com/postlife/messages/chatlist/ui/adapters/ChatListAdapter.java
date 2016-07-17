@@ -7,6 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import java.util.List;
 
 import butterknife.Bind;
@@ -14,6 +19,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import projects.bryang8.com.postlife.R;
 import projects.bryang8.com.postlife.domain.AvatarHelper;
+import projects.bryang8.com.postlife.domain.FirebaseHelper;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.ImageLoader;
 
@@ -41,19 +47,16 @@ public class ChatListAdapter extends RecyclerView.Adapter <ChatListAdapter.ViewH
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        User user = contactList.get(position);
+        final User user = contactList.get(position);
         holder.setClickListener(user, clickListener);
-
-        String email = user.getEmail();
         boolean online = user.isOnline();
-        String status = online ? "online" : "offline";
-        int color = online ? Color.GREEN : Color.RED;
+        String status = online ? "online" : "";
 
-        holder.txtUser.setText(email);
+        holder.txtUser.setText(user.getName());
         holder.txtStatus.setText(status);
-        holder.txtStatus.setTextColor(color);
 
-        imageLoader.load(holder.imgAvatar, AvatarHelper.getAvatarUrl(email));
+        imageLoader.load(holder.imgAvatar, AvatarHelper.getAvatarUrl(user.getEmail()));
+
     }
 
     @Override

@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import projects.bryang8.com.postlife.R;
-import projects.bryang8.com.postlife.friends.FriendsFragment;
+import projects.bryang8.com.postlife.friends.friendslist.ui.FriendsFragment;
 import projects.bryang8.com.postlife.login.ui.LoginActivity;
 import projects.bryang8.com.postlife.main.MainPresenter;
 import projects.bryang8.com.postlife.main.MainPresenterImpl;

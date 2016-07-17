@@ -1,6 +1,7 @@
 package projects.bryang8.com.postlife.messages.chatlist.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,10 +13,14 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import projects.bryang8.com.postlife.R;
+import projects.bryang8.com.postlife.chat.ui.ChatActivity;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.GlideImageLoader;
 import projects.bryang8.com.postlife.lib.ImageLoader;
+import projects.bryang8.com.postlife.messages.addchat.ui.AddChatFragment;
 import projects.bryang8.com.postlife.messages.chatlist.ChatListPresenter;
 import projects.bryang8.com.postlife.messages.chatlist.ChatListPresenterImpl;
 import projects.bryang8.com.postlife.messages.chatlist.ui.adapters.ChatListAdapter;
@@ -35,6 +40,7 @@ public class ChatListFragment extends Fragment implements ChatListView, OnItemCl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_messages_list, container, false);
+        ButterKnife.bind(this, view);
         presenter = new ChatListPresenterImpl(this);
         presenter.onCreate();
 
@@ -50,7 +56,7 @@ public class ChatListFragment extends Fragment implements ChatListView, OnItemCl
     }
 
     private void setupRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(adapter);
     }
 
@@ -72,6 +78,11 @@ public class ChatListFragment extends Fragment implements ChatListView, OnItemCl
         super.onPause();
     }
 
+    @OnClick(R.id.fab)
+    public void addContact(){
+        new AddChatFragment().show(getFragmentManager(),getString(R.string.addcontact_message_title));
+    }
+
     @Override
     public void onChatAdded(User user) {
         adapter.add(user);
@@ -89,7 +100,10 @@ public class ChatListFragment extends Fragment implements ChatListView, OnItemCl
 
     @Override
     public void onItemClick(User user) {
-
+        Intent intent = new Intent(this.getActivity(), ChatActivity.class);
+        intent.putExtra(ChatActivity.EMAIL_KEY, user.getEmail());
+        intent.putExtra(ChatActivity.ONLINE_KEY, user.isOnline());
+        startActivity(intent);
     }
 
     @Override
