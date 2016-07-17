@@ -97,6 +97,11 @@ public class FirebaseHelper {
         return getUserReference(email).child(FRIENDS_PATH);
     }
 
+    public Firebase getOneFriendReference(String mainEmail, String childEmail){
+        String childKey = childEmail.replace(".","_");
+        return getUserReference(mainEmail).child(FRIENDS_PATH).child(childKey);
+    }
+
     public void changeUserConnectionStatus(boolean online) {
         if (getMyUserReference() != null) {
             Map<String, Object> updates = new HashMap<String, Object>();

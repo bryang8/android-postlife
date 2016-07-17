@@ -1,15 +1,10 @@
-package projects.bryang8.com.postlife.messages.chatlist.ui.adapters;
+package projects.bryang8.com.postlife.friends.friendslist.ui.adapters;
 
-import android.content.Context;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -22,37 +17,26 @@ import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.ImageLoader;
 
 /**
- * Created by bryan_g8 on 18/06/16.
+ * Created by bryan_g8 on 16/07/16.
  */
-public class ChatListAdapter extends RecyclerView.Adapter <ChatListAdapter.ViewHolder> {
+public class FriendsAdapter extends RecyclerView.Adapter <FriendsAdapter.ViewHolder> {
     private List<User> contactList;
     private ImageLoader imageLoader;
     private OnItemClickListener clickListener;
-    private Context mContext;
 
-    public ChatListAdapter(List<User> contactList,
-                           ImageLoader imageLoader,
-                           OnItemClickListener clickListener, Context mContext) {
+    public FriendsAdapter(List<User> contactList,
+                          ImageLoader imageLoader,
+                          OnItemClickListener clickListener) {
         this.contactList = contactList;
         this.imageLoader = imageLoader;
         this.clickListener = clickListener;
-        this.mContext = mContext;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_chat_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_friend_item, parent, false);
         return new ViewHolder(view);
     }
-
-    /*private void showPopupMenu(View view) {
-        // inflate menu
-        PopupMenu popup = new PopupMenu(mContext, view);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_contactlist, popup.getMenu());
-        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
-        popup.show();
-    }*/
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
@@ -61,8 +45,8 @@ public class ChatListAdapter extends RecyclerView.Adapter <ChatListAdapter.ViewH
         boolean online = user.isOnline();
         String status = online ? "online" : "";
 
-        holder.txtUser.setText(user.getName());
-        holder.txtStatus.setText(status);
+        holder.txtName.setText(user.getName());
+        holder.txtEmail.setText(user.getEmail());
 
         imageLoader.load(holder.imgAvatar, AvatarHelper.getAvatarUrl(user.getEmail()));
 
@@ -86,7 +70,7 @@ public class ChatListAdapter extends RecyclerView.Adapter <ChatListAdapter.ViewH
         return position;
     }
 
-    private boolean alreadyInAdapter(User newUser){
+    private boolean alreadyInAdapter(User newUser) {
         boolean alreadyInAdapter = false;
         for (User user : this.contactList) {
             if (user.getEmail().equals(newUser.getEmail())) {
@@ -120,10 +104,10 @@ public class ChatListAdapter extends RecyclerView.Adapter <ChatListAdapter.ViewH
     static class ViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.imgAvatar)
         CircleImageView imgAvatar;
-        @Bind(R.id.txtStatus)
-        TextView txtStatus;
-        @Bind(R.id.txtUser)
-        TextView txtUser;
+        @Bind(R.id.txtEmail)
+        TextView txtEmail;
+        @Bind(R.id.txtName)
+        TextView txtName;
         View view;
 
         public ViewHolder(View view) {

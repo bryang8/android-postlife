@@ -31,5 +31,10 @@
         android:layout_below="@+id/txtName"
         android:layout_alignLeft="@+id/txtName"
         android:layout_alignStart="@+id/txtName" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:backgroundTint="@color/black"/>
+
 
 </RelativeLayout>

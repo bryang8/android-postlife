@@ -52,7 +52,7 @@ public class ChatListFragment extends Fragment implements ChatListView, OnItemCl
 
     private void setupAdapter() {
         ImageLoader loader = new GlideImageLoader(this.getActivity().getApplicationContext());
-        adapter = new ChatListAdapter(new ArrayList<User>(), loader, this);
+        adapter = new ChatListAdapter(new ArrayList<User>(), loader, this, this.getActivity().getApplicationContext());
     }
 
     private void setupRecyclerView() {

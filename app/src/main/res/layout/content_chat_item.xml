@@ -32,4 +32,15 @@
         android:layout_alignLeft="@+id/txtUser"
         android:layout_alignStart="@+id/txtUser" />
 
+    <ImageView
+        android:layout_width="5dp"
+        android:layout_height="30dp"
+        android:id="@+id/more"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/txtUser"
+        android:layout_marginStart="178dp"
+        android:src="@drawable/ic_more_vert_black_24dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"/>
+
 </RelativeLayout>
