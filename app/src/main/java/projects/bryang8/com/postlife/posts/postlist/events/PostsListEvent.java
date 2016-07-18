@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.posts.events;
+package projects.bryang8.com.postlife.posts.postlist.events;
 
 import projects.bryang8.com.postlife.entities.Post;
 

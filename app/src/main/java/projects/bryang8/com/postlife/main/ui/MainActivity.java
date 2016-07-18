@@ -18,7 +18,7 @@ import projects.bryang8.com.postlife.main.MainPresenter;
 import projects.bryang8.com.postlife.main.MainPresenterImpl;
 import projects.bryang8.com.postlife.main.adapters.MainPagerAdapter;
 import projects.bryang8.com.postlife.messages.chatlist.ui.ChatListFragment;
-import projects.bryang8.com.postlife.posts.ui.PostsFragment;
+import projects.bryang8.com.postlife.posts.postlist.ui.PostsFragment;
 import projects.bryang8.com.postlife.profile.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {

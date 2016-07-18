@@ -9,6 +9,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import projects.bryang8.com.postlife.entities.Post;
 import projects.bryang8.com.postlife.entities.User;
 
 /**
@@ -114,12 +115,9 @@ public class FirebaseHelper {
         }
     }
 
-    public void addNameUser(String name){
-        if (getMyUserReference() != null) {
-            Map <String, Object> updates = new HashMap<>();
-            updates.put("name", name);
-            getMyUserReference().updateChildren(updates);
-        }
+    public void createUser(String email,String name, Boolean online){
+        getUserReference(email).child("name").setValue(name);
+        getUserReference(email).child("online").setValue(online);
     }
 
     public void notifyContactsOfConnectionChange(final boolean online, final boolean signoff) {
@@ -154,5 +152,9 @@ public class FirebaseHelper {
 
     public Firebase getUserPostRefernce(String email){
         return dataReference.child(USERS_PATH).child(email).child(POSTS_PATH);
+    }
+
+    public Firebase getOnePostReference(Post post){
+        return dataReference.child(USERS_PATH).child(post.getEmail_poster()).child(post.getDate().toString());
     }
 }

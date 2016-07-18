@@ -77,7 +77,9 @@ public class SearchRepositoryImpl implements SearchRepository {
         userReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+                User user = new User(dataSnapshot.child("name").getValue().toString(),
+                        dataSnapshot.getKey(),
+                        (Boolean)dataSnapshot.child("online").getValue(),null);
                 if (user != null) {
                     Firebase myfriends = firebaseHelper.getMyFriendsReference();
                     myfriends.child(key).setValue(user.getName());

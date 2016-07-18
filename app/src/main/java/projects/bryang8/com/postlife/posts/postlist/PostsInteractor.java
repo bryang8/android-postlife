@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.posts;
+package projects.bryang8.com.postlife.posts.postlist;
 
 import projects.bryang8.com.postlife.entities.Post;
 
@@ -10,5 +10,4 @@ public interface PostsInteractor {
     void unsubscribe();
     void destroyListener();
     void likePost(Post post);
-    void dislikePost();
 }

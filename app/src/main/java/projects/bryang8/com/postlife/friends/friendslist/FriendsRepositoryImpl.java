@@ -62,7 +62,10 @@ public class FriendsRepositoryImpl implements FriendsRepository {
                 public void onCancelled(FirebaseError firebaseError) {}
             };
         }
-        firebaseHelper.getMyFriendsReference().addChildEventListener(friendEventListener);
+        try {
+            firebaseHelper.getMyFriendsReference().addChildEventListener(friendEventListener);
+        }
+        catch (NullPointerException ex){}
     }
 
     @Override

@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.posts.helper;
+package projects.bryang8.com.postlife.posts.postlist.helper;
 
 import java.util.Calendar;
 import java.util.Date;

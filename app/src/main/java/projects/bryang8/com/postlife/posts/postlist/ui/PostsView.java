@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.posts.ui;
+package projects.bryang8.com.postlife.posts.postlist.ui;
 
 import projects.bryang8.com.postlife.entities.Post;
 
@@ -8,7 +8,9 @@ import projects.bryang8.com.postlife.entities.Post;
 public interface PostsView {
     void addPost(Post post);
     void removePost(Post post);
+
+    void updatePost(Post post);
+
     void makePost();
     void likePost(Post post);
-    void dislike(Post post);
 }

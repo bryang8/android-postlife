@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.posts.ui.adapters;
+package projects.bryang8.com.postlife.posts.postlist.ui.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -20,7 +20,7 @@ import projects.bryang8.com.postlife.R;
 import projects.bryang8.com.postlife.entities.Post;
 import projects.bryang8.com.postlife.lib.ImageLoader;
 import projects.bryang8.com.postlife.lib.domain.AvatarHelper;
-import projects.bryang8.com.postlife.posts.helper.DateManager;
+import projects.bryang8.com.postlife.posts.postlist.helper.DateManager;
 
 /**
  * Created by bryan_g8 on 17/07/16.
@@ -64,8 +64,10 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_profile:
-                        clickListener.onMenuClick(post);
+                        clickListener.onProfileClick(post);
                         break;
+                    case R.id.action_report:
+                        clickListener.onReportClick();
                 }
                 return true;
             }
@@ -74,6 +76,12 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
             @Override
             public void onClick(View v) {
                 clickListener.onFavClick(post);
+            }
+        });
+        holder.imgAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onProfileClick(post);
             }
         });
     }

@@ -33,7 +33,7 @@ public class LoginRepositoryImpl implements LoginRepository{
             public void onSuccess() {
                 postEvent(LoginEvent.onSignUpSuccess);
                 signIn(email, password);
-                helper.addNameUser(name);
+                helper.createUser(email,name, true);
             }
 
             @Override
@@ -71,10 +71,10 @@ public class LoginRepositoryImpl implements LoginRepository{
         myUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User currentUser = new User(dataSnapshot.child("name").getValue().toString(),
-                                    dataSnapshot.getKey().toString(),
-                                    (Boolean)dataSnapshot.child("online").getValue(),
-                                    null);
+                String email = dataSnapshot.getKey();
+                String name = dataSnapshot.child("name").getValue().toString();
+                Boolean online = (Boolean)dataSnapshot.child("online").getValue();
+                User currentUser = new User(name, email, online,null);
                 if  (currentUser == null) {
                     registerNewUser();
                 }
