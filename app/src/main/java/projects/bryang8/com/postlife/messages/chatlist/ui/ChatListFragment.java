@@ -17,7 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import projects.bryang8.com.postlife.R;
-import projects.bryang8.com.postlife.chat.ui.ChatActivity;
+import projects.bryang8.com.postlife.messages.chat.ui.ChatActivity;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.GlideImageLoader;
 import projects.bryang8.com.postlife.lib.ImageLoader;

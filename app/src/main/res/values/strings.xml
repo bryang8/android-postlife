@@ -39,4 +39,9 @@
     <string name="friends.search.action.removeFriend">Dejar de seguir</string>
     <string name="posts.action.seeprofile">Ver perfil</string>
     <string name="posts.action.removeFriend">Reportar post</string>
+    <string name="post.hint">¿Qué estás pensando?</string>
+    <string name="addChat.add">Aceptar</string>
+    <string name="addChat.title">Agregar conversación</string>
+    <string name="addPost.title">Agregar post</string>
+    <string name="addPost_message">Post agregado</string>
 </resources>

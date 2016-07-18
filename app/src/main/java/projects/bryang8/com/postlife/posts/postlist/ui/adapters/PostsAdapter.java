@@ -20,6 +20,7 @@ import projects.bryang8.com.postlife.R;
 import projects.bryang8.com.postlife.entities.Post;
 import projects.bryang8.com.postlife.lib.ImageLoader;
 import projects.bryang8.com.postlife.lib.domain.AvatarHelper;
+import projects.bryang8.com.postlife.lib.domain.FirebaseHelper;
 import projects.bryang8.com.postlife.posts.postlist.helper.DateManager;
 
 /**
@@ -53,19 +54,27 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
         holder.txtName.setText(post.getName_poster());
         holder.txtEmail.setText(post.getEmail_poster());
         holder.txtContent.setText(post.getContent());
-        holder.txtFavsNum.setText(post.getLikesNum());
+
         holder.txtDate.setText(DateManager.calculateTime(post.getDate()));
+        holder.txtFavsNum.setText(post.getLikesNum().toString());
 
         imageLoader.load(holder.imgAvatar, AvatarHelper.getAvatarUrl(post.getEmail_poster()));
 
+        holder.imgLike.setImageResource(R.drawable.nonfavorite);
+        String email = FirebaseHelper.getInstance().getAuthUserEmail().replace(".","_");
+        if (post.getLikes() != null){
+            if(post.getLikes().containsKey(email)){
+                if(post.getLikes().get(email)){
+                    holder.imgLike.setImageResource(R.drawable.favorite);
+                }
+            }
+        }
+        holder.toolbarCard.getMenu().clear();
         holder.toolbarCard.inflateMenu(R.menu.menu_posts_item);
         holder.toolbarCard.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_profile:
-                        clickListener.onProfileClick(post);
-                        break;
                     case R.id.action_report:
                         clickListener.onReportClick();
                 }
@@ -161,7 +170,7 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.view = view;
+            this.view = itemView;
             ButterKnife.bind(this, view);
         }
     }

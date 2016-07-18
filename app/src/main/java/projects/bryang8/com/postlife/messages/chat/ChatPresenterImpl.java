@@ -1,9 +1,9 @@
-package projects.bryang8.com.postlife.chat;
+package projects.bryang8.com.postlife.messages.chat;
 
 import org.greenrobot.eventbus.Subscribe;
 
-import projects.bryang8.com.postlife.chat.events.ChatEvent;
-import projects.bryang8.com.postlife.chat.ui.ChatView;
+import projects.bryang8.com.postlife.messages.chat.events.ChatEvent;
+import projects.bryang8.com.postlife.messages.chat.ui.ChatView;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.EventBus;
 import projects.bryang8.com.postlife.lib.GreenRobotEventBus;

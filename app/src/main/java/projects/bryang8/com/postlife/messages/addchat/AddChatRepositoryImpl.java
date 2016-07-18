@@ -30,7 +30,9 @@ public class AddChatRepositoryImpl implements AddChatRepository {
         userReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+                User user = new User(dataSnapshot.child("name").getValue().toString(),
+                        dataSnapshot.getKey(),
+                        (Boolean)dataSnapshot.child("online").getValue(),null);
                 if (user != null) {
                     Firebase myContactReference = helper.getMyContactsReference();
                     myContactReference.child(key).setValue(user.isOnline());

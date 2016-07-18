@@ -63,9 +63,6 @@ public class SearchAdapter extends RecyclerView.Adapter <SearchAdapter.ViewHolde
                     case R.id.action_add:
                         clickListener.onMenuClick(user);
                         break;
-                    case R.id.action_profile:
-                        clickListener.onClick(user);
-                        break;
                 }
                 return true;
             }

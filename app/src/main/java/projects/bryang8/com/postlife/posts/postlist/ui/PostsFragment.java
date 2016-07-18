@@ -9,15 +9,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import projects.bryang8.com.postlife.R;
 import projects.bryang8.com.postlife.entities.Post;
 import projects.bryang8.com.postlife.lib.GlideImageLoader;
 import projects.bryang8.com.postlife.lib.ImageLoader;
+import projects.bryang8.com.postlife.lib.domain.AvatarHelper;
+import projects.bryang8.com.postlife.lib.domain.FirebaseHelper;
+import projects.bryang8.com.postlife.posts.addpost.AddPostFragment;
 import projects.bryang8.com.postlife.posts.postlist.PostsPresenter;
 import projects.bryang8.com.postlife.posts.postlist.PostsPresenterImpl;
 import projects.bryang8.com.postlife.posts.postlist.ui.adapters.OnItemClickListener;
@@ -29,9 +35,12 @@ import projects.bryang8.com.postlife.posts.postlist.ui.adapters.PostsAdapter;
 public class PostsFragment extends Fragment implements PostsView, OnItemClickListener {
     @Bind(R.id.recyclerPosts)
     RecyclerView recyclerView;
+    @Bind(R.id.imgAvatar)
+    CircleImageView imgAvatar;
 
     private PostsPresenter presenter;
     private PostsAdapter adapter;
+    ImageLoader loader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,16 +48,18 @@ public class PostsFragment extends Fragment implements PostsView, OnItemClickLis
         View view = inflater.inflate(R.layout.fragment_post, container, false);
         ButterKnife.bind(this, view);
 
+        loader = new GlideImageLoader(this.getActivity().getApplicationContext());
+        loader.load(imgAvatar, AvatarHelper.getAvatarUrl(FirebaseHelper.getInstance().getAuthUserEmail()));
+
         presenter = new PostsPresenterImpl(this);
         presenter.onCreate();
 
-        setupRecyclerView();
         setupAdapter();
+        setupRecyclerView();
         return view;
     }
 
     private void setupAdapter() {
-        ImageLoader loader = new GlideImageLoader(this.getActivity().getApplicationContext());
         adapter = new PostsAdapter(new ArrayList<Post>(), loader, this, this.getActivity());
     }
 
@@ -90,9 +101,10 @@ public class PostsFragment extends Fragment implements PostsView, OnItemClickLis
         adapter.update(post);
     }
 
+    @OnClick(R.id.cardNewPost)
     @Override
     public void makePost() {
-
+        new AddPostFragment().show(getFragmentManager(),"");
     }
 
     @Override

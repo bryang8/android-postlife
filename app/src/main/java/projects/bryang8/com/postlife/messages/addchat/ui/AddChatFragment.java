@@ -24,6 +24,8 @@ public class AddChatFragment extends DialogFragment implements AddChatView, Dial
     EditText editTextEmail;
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
+    @Bind(R.id.btnAccept)
+    Button btnAccept;
 
     private AddChatPresenter presenter;
     public AddChatFragment() {
@@ -33,19 +35,7 @@ public class AddChatFragment extends DialogFragment implements AddChatView, Dial
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder= new AlertDialog.Builder(getActivity())
-                .setPositiveButton(R.string.addcontact_message_add, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .setNegativeButton(R.string.addcontact_message_cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
+        AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
 
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_add_chat, null);
         ButterKnife.bind(this, view);
@@ -91,20 +81,11 @@ public class AddChatFragment extends DialogFragment implements AddChatView, Dial
     public void onShow(DialogInterface dialogInterface) {
         final AlertDialog dialog = (AlertDialog)getDialog();
         if (dialog != null) {
-            Button positiveButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
-            Button negativeButton = dialog.getButton(Dialog.BUTTON_NEGATIVE);
 
-            positiveButton.setOnClickListener(new View.OnClickListener() {
+            btnAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     presenter.addContact(editTextEmail.getText().toString());
-                }
-            });
-
-            negativeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
                 }
             });
         }

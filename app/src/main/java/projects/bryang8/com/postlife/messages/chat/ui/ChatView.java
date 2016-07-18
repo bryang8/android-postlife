@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.chat.ui;
+package projects.bryang8.com.postlife.messages.chat.ui;
 
 import projects.bryang8.com.postlife.entities.ChatMessage;
 import projects.bryang8.com.postlife.entities.ChatMessage;

@@ -155,6 +155,6 @@ public class FirebaseHelper {
     }
 
     public Firebase getOnePostReference(Post post){
-        return dataReference.child(USERS_PATH).child(post.getEmail_poster()).child(post.getDate().toString());
+        return dataReference.child(USERS_PATH).child(post.getEmail_poster()).child(POSTS_PATH).child(post.getDate().toString());
     }
 }

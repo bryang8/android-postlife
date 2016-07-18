@@ -1,6 +1,7 @@
 package projects.bryang8.com.postlife.messages.chatlist.ui.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -49,11 +50,14 @@ public class ChatListAdapter extends RecyclerView.Adapter <ChatListAdapter.ViewH
         final User user = contactList.get(position);
         holder.setClickListener(user, clickListener);
         boolean online = user.isOnline();
-        String status = online ? "online" : "";
+        String status = online ? "online" : "offline";
 
         holder.txtUser.setText(user.getName());
         holder.txtStatus.setText(status);
 
+        if (online) {
+            holder.txtStatus.setTextColor(Color.GREEN);
+        }
         imageLoader.load(holder.imgAvatar, AvatarHelper.getAvatarUrl(user.getEmail()));
 
         holder.toolbarCard.inflateMenu(R.menu.menu_chatitem);

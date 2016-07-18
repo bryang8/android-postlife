@@ -12,13 +12,13 @@ public class Post {
     String name_poster;
     String content;
     Integer likesNum;
-    Map<String, String> likes;
+    Map<String, Boolean> likes;
 
     public Post() {
     }
 
     public Post(Date date, String email_poster, String name_poster
-            , String content, Integer likesNum, Map<String, String> likes) {
+            , String content, Integer likesNum, Map<String, Boolean> likes) {
         this.date = date;
         this.email_poster = email_poster;
         this.name_poster = name_poster;
@@ -67,11 +67,11 @@ public class Post {
         this.likesNum = likesNum;
     }
 
-    public Map<String, String> getLikes() {
+    public Map<String, Boolean> getLikes() {
         return likes;
     }
 
-    public void setLikes(Map<String, String> likes) {
+    public void setLikes(Map<String, Boolean> likes) {
         this.likes = likes;
     }
 }

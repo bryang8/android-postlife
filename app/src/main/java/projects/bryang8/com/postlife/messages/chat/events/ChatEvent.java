@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.chat.events;
+package projects.bryang8.com.postlife.messages.chat.events;
 
 import projects.bryang8.com.postlife.entities.ChatMessage;
 

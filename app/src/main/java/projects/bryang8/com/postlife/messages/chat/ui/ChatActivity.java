@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.chat.ui;
+package projects.bryang8.com.postlife.messages.chat.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +15,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import projects.bryang8.com.postlife.R;
-import projects.bryang8.com.postlife.chat.ChatPresenter;
-import projects.bryang8.com.postlife.chat.ChatPresenterImpl;
-import projects.bryang8.com.postlife.chat.ui.adapters.ChatAdapter;
+import projects.bryang8.com.postlife.messages.chat.ChatPresenter;
+import projects.bryang8.com.postlife.messages.chat.ChatPresenterImpl;
+import projects.bryang8.com.postlife.messages.chat.ui.adapters.ChatAdapter;
 import projects.bryang8.com.postlife.entities.ChatMessage;
 
 public class ChatActivity extends AppCompatActivity implements ChatView {
@@ -79,7 +79,7 @@ public class ChatActivity extends AppCompatActivity implements ChatView {
         chatPresenter.setChatRecipient(recipient);
 
         boolean online = i.getBooleanExtra(ONLINE_KEY, false);
-        String status = online ? "online" : "";
+        String status = online ? "online" : "offline";
 
         txtUser.setText(recipient);
         txtStatus.setText(status);

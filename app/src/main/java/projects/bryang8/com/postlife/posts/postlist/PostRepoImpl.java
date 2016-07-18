@@ -2,6 +2,7 @@ package projects.bryang8.com.postlife.posts.postlist;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
@@ -21,7 +22,7 @@ public class PostRepoImpl implements PostsRepo {
     private ChildEventListener friendsListener;
     private EventBus eventBus;
     private final static String DATE = "date";
-    private final static String LIKES_NUM = "likesnum";
+    private final static String LIKES_NUM = "likesNum";
     private final static String LIKES = "likes";
 
     public PostRepoImpl() {
@@ -32,27 +33,16 @@ public class PostRepoImpl implements PostsRepo {
     @Override
     public void likePost(final Post post) {
         likeListener = new ValueEventListener() {
-
+        String emailAuth = helper.getAuthUserEmail().replace(".", "_");
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String emailAuth = helper.getAuthUserEmail().replace(".", "_");
+
                 if(dataSnapshot.child(LIKES).child(emailAuth).exists() &&
                         (Boolean)dataSnapshot.child(LIKES).child(emailAuth).getValue()){
-
-                    helper.getOnePostReference(post).child(LIKES).child(emailAuth)
-                            .child(emailAuth).setValue(false);
-
-                    int likesNum = Integer.parseInt(dataSnapshot
-                            .child(LIKES_NUM).getValue().toString());
-
-                    helper.getOnePostReference(post).child(LIKES_NUM).setValue(likesNum - 1);
+                    removeLike(dataSnapshot);
                 }
                 else {
-                    helper.getOnePostReference(post).child(LIKES).child(emailAuth).setValue(true);
-
-                    helper.getOnePostReference(post).child(LIKES_NUM).setValue(
-                            Integer.parseInt(dataSnapshot.child(LIKES_NUM).toString()) - 1
-                    );
+                    addLike(dataSnapshot);
                 }
                 /*PostsListEvent event = new PostsListEvent();
                 event.setEventType(PostsListEvent.onPostChanged);
@@ -60,6 +50,30 @@ public class PostRepoImpl implements PostsRepo {
                 eventBus.post(event);*/
             }
 
+            public void addLike(DataSnapshot dataSnapshot){
+                helper.getOnePostReference(post).child(LIKES).child(emailAuth).setValue(true);
+
+                int likesNum = 0;
+                if(dataSnapshot.child(LIKES_NUM).toString() != null ) {
+                    try {
+                        String likes_num =dataSnapshot.child(LIKES_NUM).getValue().toString();
+                        likesNum = Integer.parseInt(likes_num) + 1;
+                    }catch (NumberFormatException num){}
+                }
+                helper.getOnePostReference(post).child(LIKES_NUM).setValue(likesNum);
+            }
+
+            public void removeLike(DataSnapshot dataSnapshot){
+                helper.getOnePostReference(post).child(LIKES).child(emailAuth)
+                        .setValue(false);
+
+                int likesNum = 0;
+                try {
+                    likesNum = Integer.parseInt(dataSnapshot.child(LIKES_NUM).getValue().toString());
+                }catch (NumberFormatException num){}
+
+                helper.getOnePostReference(post).child(LIKES_NUM).setValue(likesNum - 1);
+            }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
@@ -75,63 +89,59 @@ public class PostRepoImpl implements PostsRepo {
 
     @Override
     public void subscribe() {
-        if (listener == null){
-            listener = new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    handlePost(dataSnapshot,PostsListEvent.onPostAdded);
-                    friendsListener();
-                }
+        listener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                handlePost(dataSnapshot, PostsListEvent.onPostAdded);
+            }
 
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    handlePost(dataSnapshot,PostsListEvent.onPostChanged);
-                }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                handlePost(dataSnapshot, PostsListEvent.onPostChanged);
+            }
 
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-                    handlePost(dataSnapshot,PostsListEvent.onPostRemoved);
-                }
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                handlePost(dataSnapshot, PostsListEvent.onPostRemoved);
+            }
 
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                }
+            }
 
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
 
-                }
-            };
-        }
-    }
+            }
+        };
+        helper.getMyFriendsReference().addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                helper.getUserPostRefernce(dataSnapshot.getKey()).addChildEventListener(listener);
+            }
 
-    public void friendsListener(){
-        if (friendsListener == null) {
-            friendsListener = new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String previousChildKey) {
-                   helper.getUserPostRefernce(dataSnapshot.getKey()).addChildEventListener(listener);
-                }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String previousChildKey) {
+            }
 
-                }
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-                    helper.getUserPostRefernce(dataSnapshot.getKey()).removeEventListener(listener);
-                }
+            }
 
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {}
-            };
-        }
-        helper.getMyFriendsReference().addChildEventListener(friendsListener);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        helper.getMyUserReference().child("posts").addChildEventListener(listener);
     }
 
     @Override

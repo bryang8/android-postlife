@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.signup.ui;
+package projects.bryang8.com.postlife.login.ui;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;

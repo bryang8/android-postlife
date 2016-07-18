@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.chat;
+package projects.bryang8.com.postlife.messages.chat;
 
 /**
  * Created by bryan_g8 on 19/06/16.

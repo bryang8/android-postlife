@@ -18,14 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup.ui.SignupActivity">
+        <activity android:name=".login.ui.SignupActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".login.ui.LoginActivity" />
         </activity>
         <activity android:name=".main.ui.MainActivity" />
         <activity
-            android:name=".chat.ui.ChatActivity"
+            android:name=".messages.chat.ui.ChatActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

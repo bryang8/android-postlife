@@ -43,13 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private void setupAdapter() {
         Fragment[] fragments = new Fragment[] {new PostsFragment(),
                                                 new ChatListFragment(),
-                                                new FriendsFragment(),
-                                                new ProfileFragment()};
+                                                new FriendsFragment()};
 
         String[] titles = new String[] {getString(R.string.main_header_posts),
                                         getString(R.string.main_header_messages),
-                                        getString(R.string.main_header_friends),
-                                        getString(R.string.main_header_profile)};
+                                        getString(R.string.main_header_friends)};
 
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager(), fragments, titles);
         viewPager.setAdapter(adapter);

@@ -16,7 +16,6 @@ import projects.bryang8.com.postlife.main.ui.MainActivity;
 import projects.bryang8.com.postlife.R;
 import projects.bryang8.com.postlife.login.LoginPresenter;
 import projects.bryang8.com.postlife.login.LoginPresenterImpl;
-import projects.bryang8.com.postlife.signup.ui.SignupActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
     @Bind(R.id.btnSignin)           Button btnSignIn;

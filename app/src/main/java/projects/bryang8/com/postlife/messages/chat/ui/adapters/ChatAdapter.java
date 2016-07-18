@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.chat.ui.adapters;
+package projects.bryang8.com.postlife.messages.chat.ui.adapters;
 
 import android.content.Context;
 import android.content.res.TypedArray;

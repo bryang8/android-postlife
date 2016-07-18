@@ -1,6 +1,6 @@
-package projects.bryang8.com.postlife.chat;
+package projects.bryang8.com.postlife.messages.chat;
 
-import projects.bryang8.com.postlife.chat.events.ChatEvent;
+import projects.bryang8.com.postlife.messages.chat.events.ChatEvent;
 
 /**
  * Created by bryan_g8 on 19/06/16.
