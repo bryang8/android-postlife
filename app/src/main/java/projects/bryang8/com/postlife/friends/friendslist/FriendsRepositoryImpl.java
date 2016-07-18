@@ -75,8 +75,8 @@ public class FriendsRepositoryImpl implements FriendsRepository {
     private void handleChat(DataSnapshot dataSnapshot,final int type) {
         String email = dataSnapshot.getKey();
         email = email.replace("_",".");
-        boolean online = ((Boolean)dataSnapshot.getValue()).booleanValue();
-        final User user = new User("Name",email, online, null);
+        String name= ((String)dataSnapshot.getValue());
+        final User user = new User(name ,email, true, null);
         FirebaseHelper.getInstance().getUserReference(user.getEmail()).child("name").
                 addValueEventListener(new ValueEventListener() {
                     @Override

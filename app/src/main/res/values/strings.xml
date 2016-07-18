@@ -32,4 +32,8 @@
     <string name="login.message.name">Nombre</string>
     <string name="login.message.passwordconfirmation">Confirmar contraseña</string>
     <string name="chat.menu.delete">Eliminar</string>
+    <string name="action_search">Buscar Amigo</string>
+    <string name="search">Nombre o Email</string>
+    <string name="friends.search.action.addFriend">Seguir amigo</string>
+    <string name="friends.search.action.seeprofile">Ver perfil</string>
 </resources>

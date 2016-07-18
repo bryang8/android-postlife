@@ -61,6 +61,10 @@ public class FirebaseHelper {
         return userReference;
     }
 
+    public Firebase getUsersReference(){
+        return getDataReference().getRoot().child(USERS_PATH);
+    }
+
     public Firebase getMyUserReference () {
         return getUserReference(getAuthUserEmail());
     }
@@ -78,9 +82,9 @@ public class FirebaseHelper {
         return getUserReference(mainEmail).child(CONTACTS_PATH).child(childKey);
     }
 
-    public Firebase getChatsReference(String receiver){
-        String keySender = getAuthUserEmail().replace(".","_");
-        String keyReceiver = receiver.replace(".","_");
+    public Firebase getChatsReference(String receiver) {
+        String keySender = getAuthUserEmail().replace(".", "_");
+        String keyReceiver = receiver.replace(".", "_");
 
         String keyChat = keySender + SEPARATOR + keyReceiver;
         if (keySender.compareTo(keyReceiver) > 0) {
@@ -93,7 +97,7 @@ public class FirebaseHelper {
         return getFriendsReference(getAuthUserEmail());
     }
 
-    private Firebase getFriendsReference(String email) {
+    public Firebase getFriendsReference(String email) {
         return getUserReference(email).child(FRIENDS_PATH);
     }
 

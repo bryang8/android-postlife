@@ -31,7 +31,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.ui.MainActivity" />
         </activity>
-        <activity android:name=".friends.addfriend.SearchActivity">
+        <activity android:name=".friends.addfriend.ui.SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.ui.MainActivity" />

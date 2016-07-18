@@ -71,7 +71,10 @@ public class LoginRepositoryImpl implements LoginRepository{
         myUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User currentUser = dataSnapshot.getValue(User.class);
+                User currentUser = new User(dataSnapshot.child("name").getValue().toString(),
+                                    dataSnapshot.getKey().toString(),
+                                    (Boolean)dataSnapshot.child("online").getValue(),
+                                    null);
                 if  (currentUser == null) {
                     registerNewUser();
                 }

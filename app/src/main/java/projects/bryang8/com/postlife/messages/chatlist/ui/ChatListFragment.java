@@ -107,7 +107,7 @@ public class ChatListFragment extends Fragment implements ChatListView, OnItemCl
     }
 
     @Override
-    public void onItemLongClick(User user) {
-
+    public void onMenuClick(User user) {
+        presenter.removeChat(user.getEmail());
     }
 }

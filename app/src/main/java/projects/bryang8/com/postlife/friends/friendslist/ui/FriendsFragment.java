@@ -17,14 +17,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import projects.bryang8.com.postlife.R;
 import projects.bryang8.com.postlife.entities.User;
-import projects.bryang8.com.postlife.friends.addfriend.SearchActivity;
+import projects.bryang8.com.postlife.friends.addfriend.ui.SearchActivity;
 import projects.bryang8.com.postlife.friends.friendslist.FriendsPresenter;
 import projects.bryang8.com.postlife.friends.friendslist.FriendsPresenterImpl;
 import projects.bryang8.com.postlife.friends.friendslist.ui.adapters.FriendsAdapter;
 import projects.bryang8.com.postlife.friends.friendslist.ui.adapters.OnItemClickListener;
 import projects.bryang8.com.postlife.lib.GlideImageLoader;
 import projects.bryang8.com.postlife.lib.ImageLoader;
-import projects.bryang8.com.postlife.messages.addchat.ui.AddChatFragment;
 
 /**
  * A simple {@link Fragment} subclass.
