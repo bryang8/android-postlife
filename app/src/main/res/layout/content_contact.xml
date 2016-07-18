@@ -21,7 +21,8 @@
         android:layout_below="@+id/txtUser"
         android:layout_alignLeft="@+id/txtUser"
         android:layout_alignStart="@+id/txtUser"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        />
 
 </LinearLayout>
 

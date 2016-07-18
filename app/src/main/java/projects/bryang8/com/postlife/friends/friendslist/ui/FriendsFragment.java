@@ -3,6 +3,7 @@ package projects.bryang8.com.postlife.friends.friendslist.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -105,7 +106,8 @@ public class FriendsFragment extends Fragment implements FriendsView, OnItemClic
     }
 
     @Override
-    public void onItemLongClick(User user) {
-
+    public void onMenuClick(User user) {
+        presenter.removeFriend(user.getEmail());
+        Snackbar.make(recyclerView, "Ya no sigues a "+user.getName(), Snackbar.LENGTH_SHORT).show();
     }
 }

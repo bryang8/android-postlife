@@ -1,6 +1,6 @@
 package projects.bryang8.com.postlife.main;
 
-import projects.bryang8.com.postlife.domain.FirebaseHelper;
+import projects.bryang8.com.postlife.lib.domain.FirebaseHelper;
 
 /**
  * Created by bryan_g8 on 14/07/16.

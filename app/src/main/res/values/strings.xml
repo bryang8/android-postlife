@@ -22,7 +22,7 @@
     <string name="signup.button.signup">Crear cuenta</string>
 
     <string name="main.header.messages">Mensajes</string>
-    <string name="main.header.posts">Posts</string>
+    <string name="main.header.posts">Timeline</string>
     <string name="main.header.friends">Friends</string>
     <string name="main.header.profile">Profile</string>
 
@@ -36,4 +36,7 @@
     <string name="search">Nombre o Email</string>
     <string name="friends.search.action.addFriend">Seguir amigo</string>
     <string name="friends.search.action.seeprofile">Ver perfil</string>
+    <string name="friends.search.action.removeFriend">Dejar de seguir</string>
+    <string name="posts.action.seeprofile">Ver perfil</string>
+    <string name="posts.action.removeFriend">Reportar post</string>
 </resources>

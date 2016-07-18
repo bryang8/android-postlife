@@ -1,7 +1,9 @@
 package projects.bryang8.com.postlife.friends.friendslist.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -12,7 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import projects.bryang8.com.postlife.R;
-import projects.bryang8.com.postlife.domain.AvatarHelper;
+import projects.bryang8.com.postlife.lib.domain.AvatarHelper;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.ImageLoader;
 
@@ -50,6 +52,19 @@ public class FriendsAdapter extends RecyclerView.Adapter <FriendsAdapter.ViewHol
 
         imageLoader.load(holder.imgAvatar, AvatarHelper.getAvatarUrl(user.getEmail()));
 
+        holder.toolbarCard.getMenu().clear();
+        holder.toolbarCard.inflateMenu(R.menu.menu_friend_item);
+        holder.toolbarCard.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_add:
+                        clickListener.onMenuClick(user);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -109,6 +124,8 @@ public class FriendsAdapter extends RecyclerView.Adapter <FriendsAdapter.ViewHol
         @Bind(R.id.txtName)
         TextView txtName;
         View view;
+        @Bind(R.id.toolbarCard)
+        Toolbar toolbarCard;
 
         public ViewHolder(View view) {
             super(view);
@@ -122,14 +139,6 @@ public class FriendsAdapter extends RecyclerView.Adapter <FriendsAdapter.ViewHol
                 @Override
                 public void onClick(View view) {
                     listener.onItemClick(user);
-                }
-            });
-
-            view.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    listener.onItemLongClick(user);
-                    return false;
                 }
             });
         }

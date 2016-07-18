@@ -6,7 +6,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import projects.bryang8.com.postlife.domain.FirebaseHelper;
+import projects.bryang8.com.postlife.lib.domain.FirebaseHelper;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.friends.addfriend.events.Friends;
 

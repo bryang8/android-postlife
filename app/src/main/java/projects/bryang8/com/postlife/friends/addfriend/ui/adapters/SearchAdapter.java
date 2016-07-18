@@ -16,7 +16,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import projects.bryang8.com.postlife.R;
-import projects.bryang8.com.postlife.domain.AvatarHelper;
+import projects.bryang8.com.postlife.lib.domain.AvatarHelper;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.ImageLoader;
 
@@ -54,6 +54,7 @@ public class SearchAdapter extends RecyclerView.Adapter <SearchAdapter.ViewHolde
 
         imageLoader.load(holder.imgAvatar, AvatarHelper.getAvatarUrl(user.getEmail()));
 
+        holder.toolbarCard.getMenu().clear();
         holder.toolbarCard.inflateMenu(R.menu.menu_search_item);
         holder.toolbarCard.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

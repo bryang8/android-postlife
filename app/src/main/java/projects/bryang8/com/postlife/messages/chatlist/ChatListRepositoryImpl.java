@@ -5,7 +5,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import projects.bryang8.com.postlife.domain.FirebaseHelper;
+import projects.bryang8.com.postlife.lib.domain.FirebaseHelper;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.EventBus;
 import projects.bryang8.com.postlife.lib.GreenRobotEventBus;

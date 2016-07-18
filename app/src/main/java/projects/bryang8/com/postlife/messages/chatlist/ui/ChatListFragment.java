@@ -3,6 +3,7 @@ package projects.bryang8.com.postlife.messages.chatlist.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -96,6 +97,7 @@ public class ChatListFragment extends Fragment implements ChatListView, OnItemCl
     @Override
     public void onChatRemoved(User user) {
         adapter.remove(user);
+        Snackbar.make(recyclerView, "Conversación eliminada", Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

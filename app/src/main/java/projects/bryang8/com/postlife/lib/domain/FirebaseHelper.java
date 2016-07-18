@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.domain;
+package projects.bryang8.com.postlife.lib.domain;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
@@ -6,8 +6,6 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -152,5 +150,9 @@ public class FirebaseHelper {
     public void signOff(){
         notifyContactsOfConnectionChange(User.OFFLINE, true);
         changeUserConnectionStatus(User.OFFLINE);
+    }
+
+    public Firebase getUserPostRefernce(String email){
+        return dataReference.child(USERS_PATH).child(email).child(POSTS_PATH);
     }
 }

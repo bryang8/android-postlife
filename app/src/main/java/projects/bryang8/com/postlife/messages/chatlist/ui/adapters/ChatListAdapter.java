@@ -15,7 +15,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import projects.bryang8.com.postlife.R;
-import projects.bryang8.com.postlife.domain.AvatarHelper;
+import projects.bryang8.com.postlife.lib.domain.AvatarHelper;
 import projects.bryang8.com.postlife.entities.User;
 import projects.bryang8.com.postlife.lib.ImageLoader;
 

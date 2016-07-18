@@ -8,5 +8,5 @@ import projects.bryang8.com.postlife.entities.User;
 public interface OnItemClickListener {
     public void onItemClick(User user);
 
-    public void onItemLongClick(User user);
+    public void onMenuClick(User user);
 }

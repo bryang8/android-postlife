@@ -1,6 +1,7 @@
 package projects.bryang8.com.postlife.friends.addfriend.ui;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -112,5 +113,6 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickList
     @Override
     public void onMenuClick(User user) {
         presenter.addFriend(user.getEmail());
+        Snackbar.make(recyclerView, "Ahora sigues a "+user.getName()+"!", Snackbar.LENGTH_SHORT).show();
     }
 }

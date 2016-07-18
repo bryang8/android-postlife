@@ -1,4 +1,4 @@
-package projects.bryang8.com.postlife.domain;
+package projects.bryang8.com.postlife.lib.domain;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

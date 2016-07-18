@@ -34,7 +34,6 @@ public class AddChatFragment extends DialogFragment implements AddChatView, Dial
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder= new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.addcontact_message_title)
                 .setPositiveButton(R.string.addcontact_message_add, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

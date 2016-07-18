@@ -6,7 +6,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import projects.bryang8.com.postlife.chat.events.ChatEvent;
-import projects.bryang8.com.postlife.domain.FirebaseHelper;
+import projects.bryang8.com.postlife.lib.domain.FirebaseHelper;
 import projects.bryang8.com.postlife.entities.ChatMessage;
 import projects.bryang8.com.postlife.lib.EventBus;
 import projects.bryang8.com.postlife.lib.GreenRobotEventBus;

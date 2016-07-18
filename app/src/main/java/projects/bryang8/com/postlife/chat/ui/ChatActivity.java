@@ -1,7 +1,6 @@
 package projects.bryang8.com.postlife.chat.ui;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,15 +14,11 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import de.hdodenhof.circleimageview.CircleImageView;
 import projects.bryang8.com.postlife.R;
 import projects.bryang8.com.postlife.chat.ChatPresenter;
 import projects.bryang8.com.postlife.chat.ChatPresenterImpl;
 import projects.bryang8.com.postlife.chat.ui.adapters.ChatAdapter;
-import projects.bryang8.com.postlife.domain.AvatarHelper;
 import projects.bryang8.com.postlife.entities.ChatMessage;
-import projects.bryang8.com.postlife.lib.GlideImageLoader;
-import projects.bryang8.com.postlife.lib.ImageLoader;
 
 public class ChatActivity extends AppCompatActivity implements ChatView {
     @Bind(R.id.toolbar)
