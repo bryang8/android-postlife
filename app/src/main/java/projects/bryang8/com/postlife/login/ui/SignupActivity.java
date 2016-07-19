@@ -27,6 +27,8 @@ public class SignupActivity extends AppCompatActivity implements LoginView{
     EditText inputEmail;
     @Bind(R.id.editTxtPassword)
     EditText inputPassword;
+    @Bind(R.id.editTxtPasswordConfirmation)
+    EditText passwordConfirm;
     @Bind(R.id.editTxtName)
     EditText inputName;
     @Bind(R.id.progressBar)
@@ -87,9 +89,11 @@ public class SignupActivity extends AppCompatActivity implements LoginView{
     @OnClick(R.id.btnSignup)
     @Override
     public void handleSignUp() {
-        loginPresenter.registerNewUser(inputName.getText().toString(),
-                                        inputEmail.getText().toString(),
-                                        inputPassword.getText().toString());
+        if (validate()) {
+            loginPresenter.registerNewUser(inputName.getText().toString(),
+                    inputEmail.getText().toString(),
+                    inputPassword.getText().toString());
+        }
     }
 
     @Override
@@ -125,4 +129,26 @@ public class SignupActivity extends AppCompatActivity implements LoginView{
         inputPassword.setEnabled(enable);
         btnSignUp.setEnabled(enable);
     }
+
+    public boolean validate() {
+        boolean valid = true;
+
+        String password = inputPassword.getText().toString();
+        String confirmPassword = passwordConfirm.getText().toString();
+
+        if (password.isEmpty() || password.length() < 4
+                || password.length() > 10) {
+            inputPassword.setError("La contraseña debe contener entre 4 " +
+                    "y 10 caracteres alfanumericos");
+            valid = false;
+        }
+
+        if (!confirmPassword.equals(password)) {
+            passwordConfirm.setError("Las contraseñas no coinciden");
+            valid = false;
+        }
+
+        return valid;
+    }
+
 }
