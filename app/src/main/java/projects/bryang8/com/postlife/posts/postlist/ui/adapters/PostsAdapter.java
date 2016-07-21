@@ -52,7 +52,7 @@ public class PostsAdapter extends RecyclerView.Adapter <PostsAdapter.ViewHolder>
         final Post post =  postsList.get(position);
 
         holder.txtName.setText(post.getName_poster());
-        holder.txtEmail.setText(post.getEmail_poster());
+        holder.txtEmail.setText(post.getEmail_poster().replace("_","."));
         holder.txtContent.setText(post.getContent());
 
         holder.txtDate.setText(DateManager.calculateTime(post.getDate()));

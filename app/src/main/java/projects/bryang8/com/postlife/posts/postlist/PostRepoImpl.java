@@ -118,8 +118,10 @@ public class PostRepoImpl implements PostsRepo {
         helper.getMyFriendsReference().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                helper.getUserPostRefernce(dataSnapshot.getKey()).addChildEventListener(listener);
-            }
+               try {
+                   helper.getUserPostRefernce(dataSnapshot.getKey()).addChildEventListener(listener);
+               }catch (NullPointerException nu){}
+           }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
